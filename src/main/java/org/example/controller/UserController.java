@@ -125,7 +125,7 @@ public class UserController {
        List<Integer> userIdList = userService.list().stream().map(User::getId).collect(Collectors.toList());
        List<List<String>> resList1 = new ArrayList<List<String>>(); // 小组上传了多少file
        List<List<String>> resList2 = new ArrayList<List<String>>(); // 每个小组的评论量
-       List<List<String>> resList3 = new ArrayList<List<String>>(); // 每个file的下载量
+       List<List<String>> resList3 = new ArrayList<List<String>>(); // 每个file的下载量111111
        for(Integer id : userIdList){
            Integer count = fileContentService.query().eq("user_id", id).count();
            User user = userService.query().eq("id", id).one();
