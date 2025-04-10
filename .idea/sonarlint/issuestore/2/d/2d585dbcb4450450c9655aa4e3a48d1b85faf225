@@ -1,0 +1,20 @@
+
+u	java:S116"TRename this field "file_name" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(öÊ£Ùüÿÿÿÿ8‰éîâ…2
+u	java:S116"TRename this field "file_path" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(È°¼Êúÿÿÿÿ8‰éîâ…2
+p	java:S116"URename this field "file_image" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Úã©8Šéîâ…2
+C
+java:S1068"&Remove this unused "id" private field.(¼İÍ8“¬Ùù…2
+O
+java:S1068"-Remove this unused "file_name" private field.(öÊ£Ùüÿÿÿÿ8“¬Ùù…2
+G
+java:S1068"*Remove this unused "upload" private field.(‚ãÛı8”¬Ùù…2
+K
+java:S1068")Remove this unused "title" private field.(ı÷ã‡úÿÿÿÿ8”¬Ùù…2
+O
+java:S1068"-Remove this unused "file_path" private field.(È°¼Êúÿÿÿÿ8”¬Ùù…2
+J
+java:S1068".Remove this unused "file_image" private field.(Úã©8”¬Ùù…2
+D
+java:S1068"(Remove this unused "type" private field.(ŠÔ€08”¬Ùù…2
+F
+java:S1068")Remove this unused "price" private field.(‰Ø°É8”¬Ùù…2

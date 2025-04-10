@@ -1,0 +1,18 @@
+
+w
+java:S1192/"ZDefine a constant instead of duplicating this literal "-------------------------" 3 times.(£±δ§8³ήσσΰ1
+m	java:S117."QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(…Άιτ8¶ήσσΰ1
+r	java:S1170"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ψ‡Ω‹ϋÿÿÿÿ8·ήσσΰ1
+L	java:S106+"+Replace this use of System.out by a logger.(—“Ώÿÿÿÿÿ8δήσσΰ1
+L	java:S106-"+Replace this use of System.out by a logger.(“ό‰ύÿÿÿÿ8δήσσΰ1
+G	java:S106/"+Replace this use of System.out by a logger.(£±δ§8εήσσΰ1
+L	java:S1061"+Replace this use of System.out by a logger.(οπγςόÿÿÿÿ8ζήσσΰ1
+G	java:S106@"+Replace this use of System.out by a logger.(£±δ§8θήσσΰ1
+L	java:S106J"+Replace this use of System.out by a logger.(•Ή¦½ωÿÿÿÿ8κήσσΰ1
+L	java:S106L"+Replace this use of System.out by a logger.(³πΈϋÿÿÿÿ8κήσσΰ1
+G	java:S106O"+Replace this use of System.out by a logger.(£±δ§8κήσσΰ1
+X	java:S125V"<This block of commented-out lines of code should be removed.(¦½›Ϋ8ξήσσΰ1
+Q
+java:S1128	"4Remove this unused import 'org.example.dto.UserDTO'.(¤ώζΥ8σήσσΰ1
+T
+java:S1128"2Remove this unused import 'java.util.Collections'.(Ά³οΣώÿÿÿÿ8σήσσΰ1

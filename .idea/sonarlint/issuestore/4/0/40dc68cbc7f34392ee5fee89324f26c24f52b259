@@ -1,0 +1,6 @@
+
+g	java:S112E"FDefine and throw a dedicated exception instead of using a generic one.(χϊ•„ύÿÿÿÿ8‘½πα1
+r	java:S1178"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ρ²„ϋÿÿÿÿ8’½πα1
+j	java:S100("NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ή’°Ά8©½πα1
+L	java:S1062"+Replace this use of System.out by a logger.(΅λτϊÿÿÿÿ8«½πα1
+G	java:S106r"+Replace this use of System.out by a logger.(έ”ώ8¶½πα1
