@@ -22,10 +22,19 @@ public class WebAppConfigurer implements WebMvcConfigurer {
                 .allowedMethods("GET", "HEAD", "POST", "PUT", "DELETE", "OPTIONS")
                 .maxAge(3600);
     }
+//    @Override
+//    public void addResourceHandlers(ResourceHandlerRegistry registry) {
+////        registry.addResourceHandler("/icon/**").addResourceLocations("C:/Users/Administrator/Desktop/毕设/icon/");
+////        registry.addResourceHandler("/file/icon/**").addResourceLocations("C:/Users/Administrator/Desktop/毕设/fileIcon/");
+//        registry.addResourceHandler("/file/**").addResourceLocations("file:C:/Users/Administrator/Desktop/毕设/fileIcon/blogs/");
+//        registry.addResourceHandler("/blogs/**").addResourceLocations("file:C:/Users/Administrator/Desktop/毕设/fileIcon/blogs/");
+////        registry.addResourceHandler("/icon/**").addResourceLocations("E:/image/icon");
+//    }
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        registry.addResourceHandler("/icon/**").addResourceLocations("C:/Users/Administrator/Desktop/毕设/icon/");
-        registry.addResourceHandler("/file/icon/**").addResourceLocations("C:/Users/Administrator/Desktop/毕设/fileIcon/");
-//        registry.addResourceHandler("/icon/**").addResourceLocations("E:/image/icon");
+        registry.addResourceHandler("/file/**")
+                .addResourceLocations("file:C:/Users/Administrator/Desktop/毕设/fileIcon/");
+        registry.addResourceHandler("/blogs/**")
+                .addResourceLocations("file:C:/Users/Administrator/Desktop/毕设/fileIcon/blogs/");
     }
 }

@@ -31,4 +31,7 @@ public class FileContent {
     private Long down_count;
     private String user_image;
     private String price;
+    // 新增字段：是否收藏
+    private Integer isCollected;
+    private Double userRating;
 }

@@ -16,6 +16,7 @@ import org.example.util.UserHolder;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
 
+
 import javax.annotation.Resource;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -38,6 +39,7 @@ public class ICollectServiceImpl extends ServiceImpl<CollectMapper, Collect> imp
     IFileContentService fileContentService;
     @Resource
     StringRedisTemplate stringRedisTemplate;
+
     @Override
     public Result collect(CollectDto collect) {
         System.out.println(collect);
@@ -45,11 +47,15 @@ public class ICollectServiceImpl extends ServiceImpl<CollectMapper, Collect> imp
         System.out.println("-------------------------ahId"+ahId);
         int file_id = collect.getFile_id();
         System.out.println("-------------------------"+file_id);
-        int user_id = UserHolder.getUser().getId();
+        Integer user_id = UserHolder.getUser() != null ? UserHolder.getUser().getId() : null;
+        if (user_id == null) {
+            return Result.fail("用户登录过期");
+        }
         System.out.println("-------------------------user_id"+user_id);
 
         String key = BLOG_LIKED_KEY +file_id ;
         Double score = stringRedisTemplate.opsForZSet().score(key,  String.valueOf(user_id));
+        System.out.println("-------------------------score"+score);
         if (score == null) {
             // 3.如果未收藏，可以收藏
             // 3.1.数据库收藏数 + 1
@@ -59,6 +65,10 @@ public class ICollectServiceImpl extends ServiceImpl<CollectMapper, Collect> imp
             cl.setAnther_id(ahId);
             boolean isSuccess = save(cl);
             // 3.2.保存用户到Redis的set集合  zadd key value score
+            if (!isSuccess) {
+                log.error("收藏记录保存失败，file_id: {}, user_id: {}", file_id, user_id);
+                return Result.fail("收藏失败");
+            }
             if (isSuccess) {
                 stringRedisTemplate.opsForZSet().add(key, String.valueOf(user_id), System.currentTimeMillis());
                 System.out.println("-------------------------"+file_id);
@@ -79,22 +89,25 @@ public class ICollectServiceImpl extends ServiceImpl<CollectMapper, Collect> imp
             System.out.println("-------------------------"+file_id);
             boolean isSuccess = remove(new QueryWrapper<Collect>().eq("person_id",user_id).eq("file_id",file_id));
             // 4.2.把用户从Redis的set集合移除
+            if (!isSuccess) {
+                log.error("收藏记录保存失败，file_id: {}, user_id: {}", file_id, user_id);
+                return Result.fail("收藏失败");
+            }
             if (isSuccess) {
                 stringRedisTemplate.opsForZSet().remove(key, String.valueOf(user_id));
             }
         }
-//        System.out.println(collectId);
-//        FileContent fileContent = fileContentService.query().eq("id", collectId).one();
-//        fileContent.setCollect(fileContent.getCollect()+1);
-//        fileContentService.updateById(fileContent);
-//
 
         return Result.ok();
     }
 
     @Override
     public Result showcollect() {
-        Integer id = UserHolder.getUser().getId();
+//        Integer id = UserHolder.getUser().getId();
+        Integer id = UserHolder.getUser() != null ? UserHolder.getUser().getId() : null;
+        if (id == null) {
+            return Result.fail("用户登录过期");
+        }
         List<Collect> collectList = query().eq("person_id", id).list();
         List<FileContent> fileContentList = new ArrayList<>();
         if (collectList != null && !collectList.isEmpty()) {

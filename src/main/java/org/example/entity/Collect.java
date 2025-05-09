@@ -3,6 +3,8 @@ package org.example.entity;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
+import java.time.LocalDateTime;
+
 /**
  * @Author：wzm
  * @Package：org.example.entity
@@ -18,4 +20,5 @@ public class Collect {
     private Integer anther_id;
     private Integer person_id;
     private Integer file_id;
+    private LocalDateTime createTime;
 }

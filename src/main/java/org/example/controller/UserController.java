@@ -8,6 +8,7 @@ import org.example.entity.User;
 import org.example.service.ICollectService;
 import org.example.service.IFileContentService;
 import org.example.service.IUserService;
+import org.example.service.IRateService;
 import org.example.util.UserHolder;
 import org.springframework.web.bind.annotation.*;
 
@@ -34,6 +35,8 @@ import java.util.stream.Collectors;
 public class UserController {
     @Resource
     private IUserService userService;
+    @Resource
+    private IRateService rateService;
     @Resource
     private ICollectService collectService;
     @Resource
@@ -82,6 +85,13 @@ public class UserController {
     public Result collect(@RequestBody CollectDto collect){
        return collectService.collect(collect);
    };
+   @PostMapping("/rate")
+   public Result rate(@RequestBody Map<String, Object> params) {
+       Integer fileId = (Integer) params.get("file_id");
+       Integer ahId = (Integer) params.get("ah_id");
+       Double rating = new Double(params.get("rating").toString());
+       return rateService.rate(fileId, ahId, rating);
+   }
    /**
     * @description:收藏表
     * @return: org.example.dto.Result
@@ -110,7 +120,10 @@ public class UserController {
     */
    @GetMapping("/MyUpload")
     public Result MyUpload(){
-       Integer id = UserHolder.getUser().getId();
+       Integer id = UserHolder.getUser() != null ? UserHolder.getUser().getId() : null;
+       if (id == null) {
+           return Result.fail("用户登录过期");
+       }
        List<FileContent> Myfile = fileContentService.query().eq("user_id", id).list();
        return Result.ok(Myfile);
    }
